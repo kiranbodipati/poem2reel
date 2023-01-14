@@ -38,7 +38,7 @@ if poem_title!="":
         select_options=('Poem Title', 'Contextual Prompt generated from Poem', 'Custom Prompt')
         index = st.selectbox(
         'What prompt do you want to use to generate Images?',
-        range(len(select_options)),format_func=lambda x: select_options[x], index=1)
+        range(len(select_options)),format_func=lambda x: select_options[x], index=0)
         regenerate=st.checkbox("Regenerate", value=False, help="Regenerate additional images",key="regenerate")
         st.write(index)
         path=os.path.join(IMAGE_ROOT_DIR, poem_title) 

@@ -202,5 +202,6 @@ def split_text_and_write_img(poem, poem_name, image, split_type='auto', split_li
 def extract_emotions(text):
     for c in [';', '&', '#', '{', '}']: text = text.replace(c, ':')
     label = str(requests.get(SENTIC_API_URL + text).content)[2:-3]
-    print(label) 
+    label_arr=label.split(", ") 
+    return label_arr
             
