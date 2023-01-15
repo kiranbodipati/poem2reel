@@ -149,7 +149,27 @@ def write_text_image(img, text_arr, output_path, color="White" ):
         draw.text((w, h), i, font = font, fill=color)
     img.save(output_path)
     return img 
-    
+
+def audio_classification(label_arr):
+    audio_class_arr=[]
+    if 'eagerness' in label_arr or 'enthusiasm' in label_arr or "responsiveness" in label_arr:
+        audio_class_arr.append(1)
+    if 'joy' in label_arr or 'ecstacy' in label_arr or "delight" in label_arr or "bliss" in label_arr:
+        audio_class_arr.append(2)
+    if 'calmness' in label_arr or 'serenity' in label_arr or "contentment" in label_arr or "pleasantness" in label_arr or "acceptance"  in label_arr:
+        audio_class_arr.append(3)
+    if 'loathing' in label_arr or 'disgust' in label_arr or "dislike" in label_arr:
+        audio_class_arr.append(4)
+    if 'grief' in label_arr or 'sadness' in label_arr or "melancoly" in label_arr:
+        audio_class_arr.append(5)
+    if 'annoyance' in label_arr or 'anger' in label_arr or "rage" in label_arr:
+        audio_class_arr.append(6)
+    if 'anxiety' in label_arr or 'terror' in label_arr or "fear" in label_arr:
+        audio_class_arr.append(7)
+    return audio_class_arr   
+
+
+
 def auto_split(text):
     split_text=text.splitlines()
     main_list=[]
@@ -195,8 +215,16 @@ def split_text_and_write_img(poem, poem_name, image, split_type='auto', split_li
             
 #####################################################################################################            
             
-            
-        
+
+def generate_gif(input_path):
+    with ExitStack() as stack:
+        imgs = (stack.enter_context(Image.open(os.path.join(input_path,f)))
+                for f in sorted(os.listdir(input_path)))
+    img = next(imgs)
+    fp=os.path.join(input_path, "gif_output.gif")
+    img.save(fp, format='GIF', append_images=imgs, save_all=True, duration=9000, loop=1)
+    return fp
+                    
         
         
 def extract_emotions(text):
@@ -204,4 +232,20 @@ def extract_emotions(text):
     label = str(requests.get(SENTIC_API_URL + text).content)[2:-3]
     label_arr=label.split(", ") 
     return label_arr
+
+def get_audio(text):
+    label_arr=extract_emotions(text)
+    audio_arr=audio_classification(label_arr)
+    audio_paths=[]
+    for i in audio_arr:
+        audio_paths.append((AUDIO_DIR +"/"+str(i)))
+    audio_files=[]
+    for i in audio_paths:
+        print(i)
+        audio_lst=os.listdir(i)
+        print(os.listdir(i))
+        for j in audio_lst:
+            audio_files.append(os.path.join(i, str(j)))
+    print(audio_files)
+    return audio_files
             

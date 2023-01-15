@@ -40,7 +40,6 @@ if poem_title!="":
         'What prompt do you want to use to generate Images?',
         range(len(select_options)),format_func=lambda x: select_options[x], index=0)
         regenerate=st.checkbox("Regenerate", value=False, help="Regenerate additional images",key="regenerate")
-        st.write(index)
         path=os.path.join(IMAGE_ROOT_DIR, poem_title) 
         if os.path.exists(path) and regenerate==False:
             st.write("Background Images already generated for this Poem, selecting existing")
@@ -112,8 +111,25 @@ if img_selected:
                         i=i+1
                 st.write("")
             st.write("")
-    
-    
 
 
-        
+with st.expander("Reel Creation"):
+    if not os.path.exists(os.path.join(output_path, "gif_output.gif")):
+        gif_fp=generate_gif(output_path)
+    st.image(os.path.join(output_path, "gif_output.gif"), caption=poem_title)
+    st.header("The emotions detected in the poem are:")
+    col1, col2 = st.columns(2)
+    emotions=extract_emotions(poem_txt)
+    
+    with col1:
+        st.subheader(emotions[0])
+    with col2:
+        st.subheader(emotions[1])
+    audio_list=get_audio(poem_txt)
+    for file in audio_list:
+        audio_file = open(file, 'rb')
+        audio_bytes = audio_file.read()
+
+        st.audio(audio_bytes, format='audio/ogg')   
+
+
