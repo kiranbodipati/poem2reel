@@ -9,7 +9,7 @@ Install dependencies using the `requirements.txt` file. We recommend using a vir
 pip install -r requirements.txt 
 ```
 
-Create a settings.py file in `app.py` directory with all your private API Keys and root directories of input/output folders. The sample can be found in `settings.txt`. 
+Create a `settings.py` file in `app.py` directory with all your private API Keys and root directories of input/output folders. The sample can be found in `settings.txt`. 
 
 ### Streamlit App
 
