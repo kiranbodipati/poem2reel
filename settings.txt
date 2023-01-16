@@ -1,0 +1,7 @@
+OPENAI_API_KEY=
+LANG = 'en'
+SENTIC_API_KEY_EMOTION = 
+SENTIC_API_URL = 'https://sentic.net/api/' + LANG + '/' + SENTIC_API_KEY_EMOTION + '.py?text='
+IMAGE_ROOT_DIR=
+OUTPUT_ROOT_DIR=
+AUDIO_DIR=
