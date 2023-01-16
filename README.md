@@ -9,6 +9,8 @@ Install dependencies using the `requirements.txt` file. We recommend using a vir
 pip install -r requirements.txt 
 ```
 
+create a settings.py file in `app.py` directory with all your private API Keys and root directories of input/output folders. The sample can be found in settings.txt
+
 ### Streamlit App
 
 The Streamlit app contains the source for the final dashboard of the product. The files can be found in the `app` directory.
