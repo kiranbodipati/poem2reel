@@ -34,19 +34,19 @@ The tool also uses a 24 dimensional sentiment analysis (the hourglass model) to 
 Trained and fit my data on the `Keyphrase Count Vectoriser` and `KeyBERT`. Further Finetuned these models using the `DaVinci3 model` (OpenAI)to provide text that is useful as a prompt for the Image gen model.
 
 ### Image Generation
-Harnessed the power of GAN and OpenAI's DALL-E model to generate images based on prompt extracted from contextual/title/custom prompts. 
+Harnessed the power of GAN and OpenAI's `DALL-E` model to generate images based on prompt extracted from contextual/title/custom prompts. 
 
 ### Scribing Text
-Utilised PIL and OpenCV to scribe text onto the background Images.
+Utilised `PIL` and `OpenCV` to scribe text onto the background Images.
 
 ### GIF Generation
-Utilised OpenCV to generate GIFs from the poetry images. 
+Utilised `OpenCV` to generate GIFs from the poetry images. 
 
 ### Sentiment Analyisis
-Utilised SenticNet's Hourglass Emotion Analyser to analyse a 24 dimensional emotional analysis on the poem. This required additional NLP Pre processing steps to generate the emotions correctly. 
+Utilised `SenticNet's` Hourglass Emotion Analyser to analyse a 24 dimensional emotional analysis on the poem. This required additional NLP Pre processing steps to generate the emotions correctly. 
 
 ### Music Generation
-Partially used MuBERT's training algorithm to train a partial model for music generation. Due to limitations of time, the training data (Creative Commons Music) was used for music recommendation using classification based on the sentiments extracted. 
+Partially used `MuBERT's` training algorithm to train a partial model for music generation. Due to limitations of time, the training data (Creative Commons Music) was used for music recommendation using classification based on the sentiments extracted. 
 
 ## Challenges I ran into
 Dependency issues - the ffmpeg package was throwing issues which hindered the integration into an MP4 video. 
